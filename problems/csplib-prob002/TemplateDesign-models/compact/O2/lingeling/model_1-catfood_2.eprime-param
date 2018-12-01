@@ -1,9 +1,0 @@
-language ESSENCE' 1.0
-
-letting n_variations be 7
-letting n_templates be 2
-letting n_slots be 9
-letting demand_Function1D be [250, 255, 260, 500, 500, 800, 1100; int(1..7)]
-letting fin1 be 7
-letting fin2 be 250
-letting fin3 be 1100

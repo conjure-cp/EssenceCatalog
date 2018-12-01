@@ -1,8 +1,0 @@
-language ESSENCE' 1.0
-
-letting sched_RelationAsSetR3_ExplicitR3_1 be [1; int(1)]
-letting sched_RelationAsSetR3_ExplicitR3_2 be [1; int(1)]
-letting sched_RelationAsSetR3_ExplicitR3_3_Explicit be [[1, 2; int(1..2)]; int(1)]
-$ Visualisation for sched_RelationAsSetR3_ExplicitR3_3_Explicit
-$ 1 2
-

@@ -1,9 +1,0 @@
-language Essence 1.3
-
-letting network be mset({}, {}, {2, 3, 6, 7}, {3, 4, 5, 7})
-$ Visualisation for network
-$ 
-$ 
-$ 2 3 6 7
-$ 3 4 5 7
-

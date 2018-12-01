@@ -1,6 +1,0 @@
-language ESSENCE' 1.0
-
-letting lam be 5
-letting numChars be 4
-letting numCodeWords be 11
-letting dist be 4

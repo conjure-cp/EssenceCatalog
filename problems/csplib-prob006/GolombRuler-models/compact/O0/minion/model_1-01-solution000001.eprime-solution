@@ -1,4 +1,0 @@
-language ESSENCE' 1.0
-
-letting Ticks_Occurrence be [true, false, false; int(0..2)]
-letting conjure_aux1 be 0

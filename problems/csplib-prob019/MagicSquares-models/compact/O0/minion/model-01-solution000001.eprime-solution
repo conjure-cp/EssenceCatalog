@@ -1,4 +1,0 @@
-language ESSENCE' 1.0
-
-letting ms_Function1DPartial_Flags be [true; int(1)]
-letting ms_Function1DPartial_Values be [1; int(1)]

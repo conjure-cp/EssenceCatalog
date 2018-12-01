@@ -1,4 +1,0 @@
-language ESSENCE' 1.0
-
-letting s_Function1D be [0; int(1)]
-letting v_Function1D be ([] : `matrix indexed by [int] of int`)

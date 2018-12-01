@@ -1,7 +1,0 @@
-language ESSENCE' 1.0
-
-letting v be 32
-letting b be 32
-letting r be 32
-letting k be 32
-letting lambda be 32

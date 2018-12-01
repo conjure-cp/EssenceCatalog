@@ -1,9 +1,0 @@
-language Essence 1.3
-
-letting Team be new type enum {Team_1, Team_2, Team_3, Team_4}
-letting Week be new type enum {Week_1, Week_2, Week_3}
-letting Period be new type enum {Period_1, Period_2}
-letting sched be
-        relation((Week_1, Period_1, {Team_1, Team_2}), (Week_1, Period_1, {Team_3, Team_4}),
-                 (Week_2, Period_1, {Team_1, Team_3}), (Week_2, Period_1, {Team_2, Team_4}),
-                 (Week_3, Period_2, {Team_1, Team_4}), (Week_3, Period_2, {Team_2, Team_3}))

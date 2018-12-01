@@ -1,7 +1,0 @@
-language ESSENCE' 1.0
-
-letting v be 31
-letting b be 31
-letting r be 6
-letting k be 6
-letting lambda be 1

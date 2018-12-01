@@ -1,2 +1,0 @@
-# Minion Version 2
-# Git version: "0aface57 (2018-05-31 15:27:56 +0100)"

@@ -1,7 +1,0 @@
-language Essence 1.3
-
-letting hexagon be [[1; int(1)]; int(1)]
-$ Visualisation for hexagon
-$ 1
-
-letting s be 1

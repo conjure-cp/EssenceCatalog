@@ -1,4 +1,0 @@
-language ESSENCE' 1.0
-
-letting setA_Occurrence be [false, true, false, true, true, true, false, false, false, true, false, true; int(1..12)]
-letting setB_Occurrence be [true, false, true, false, false, false, true, true, true, false, true, false; int(1..12)]

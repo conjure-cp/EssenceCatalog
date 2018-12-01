@@ -1,3 +1,0 @@
-language ESSENCE' 1.0
-
-letting arrangement_Function1D be [1, 5, 8, 6, 3, 7, 2, 4; int(1..8)]

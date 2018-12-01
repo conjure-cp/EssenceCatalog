@@ -1,4 +1,0 @@
-language ESSENCE' 1.0
-
-letting seq_ExplicitBounded_Length be 22
-letting seq_ExplicitBounded_Values be [1, 2, 1, 4, 2, 8, 9, 10, 4, 11, 6, 3, 7, 5, 8, 3, 9, 6, 10, 5, 7, 11; int(1..22)]

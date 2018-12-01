@@ -1,7 +1,0 @@
-language Essence 1.3
-
-letting sched be partition({a, b}, {c, d})
-$ Visualisation for sched
-$ a b
-$ c d
-

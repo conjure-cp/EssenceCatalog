@@ -1,6 +1,0 @@
-language ESSENCE' 1.0
-
-letting boxes_PartitionOccurrence_FirstIndex be [1; int(1)]
-letting boxes_PartitionOccurrence_NumParts be 1
-letting boxes_PartitionOccurrence_PartSizes be [1; int(1)]
-letting boxes_PartitionOccurrence_WhichPart be [1; int(1)]

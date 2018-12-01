@@ -1,6 +1,0 @@
-language ESSENCE' 1.0
-
-letting boxes_PartitionAsSet_ExplicitR2_Occurrence be [[true; int(1)]; int(1)]
-$ Visualisation for boxes_PartitionAsSet_ExplicitR2_Occurrence
-$ T
-

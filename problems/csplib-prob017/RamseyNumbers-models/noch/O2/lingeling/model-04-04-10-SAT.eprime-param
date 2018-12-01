@@ -1,5 +1,0 @@
-language ESSENCE' 1.0
-
-letting k be 4
-letting l be 4
-letting num_vertices be 10
