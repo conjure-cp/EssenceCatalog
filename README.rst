@@ -34,10 +34,10 @@ We will try to make sure that:
 * if an Essence file is added to the Essence Catalog, it will be moved to CSPLib as soon as possible (when we have a natural language problem specification ready).
 
 
-EssenceCatalog-models repository
-================================
+EssenceCatalog-runs repository
+==============================
 
-See the `EssenceCatalog-models <https://github.com/conjure-cp/EssenceCatalog-models>`_ repository for generated Essence Prime models, and various runtime statistics.
+See the `EssenceCatalog-runs <https://github.com/conjure-cp/EssenceCatalog-runs>`_ repository for generated Essence Prime models, and various runtime statistics.
 
 
 Directory structure
