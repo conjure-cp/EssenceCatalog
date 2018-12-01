@@ -34,6 +34,15 @@ We will try to make sure that:
 * if an Essence file is added to the Essence Catalog, it will be moved to CSPLib as soon as possible (when we have a natural language problem specification ready).
 
 
+Scripts
+=======
+
+Some scripts are provided to keep the repository synchronised with CSPLib.
+
+* Use ``scripts/export_to_csplib.sh`` for exporting Essence problem specification to the CSPLib submodule.
+* Use ``scripts/import_from_csplib.sh`` for importing Essence problem specification from the CSPLib submodule.
+
+
 EssenceCatalog-runs repository
 ==============================
 
