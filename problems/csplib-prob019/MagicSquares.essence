@@ -1,17 +1,20 @@
-language Essence 1.3
-$ specification of magic square, via vector and injective function
-$ by Andras Salamon
-$ Licenced under CC-BY-4.0 : http://creativecommons.org/licenses/by/4.0/
+language ESSENCE 1.2.0
+$ prob019.essence: Magic Squares
+$ Problem details available at http://www.csplib.org/Problems/prob019/
+$ 05 September 2007
+$
 
 given n : int(1..)
-letting index be domain int(0..n-1)
-letting numbers be domain int(1..n**2)
-$ cell (x,y) is represented by place (x-1)*n + (y-1) + 1
-letting S be (n**2+1)*n/2 $ precompute this constant for efficiency
 
-find ms : function (injective) numbers --> numbers
+letting Index be domain int(1..n),
+        Value be domain int(1..n**2)
+
+find square : matrix indexed by [Index,Index] of Value,
+     s : int(1..sum i : int(n**2+1-n..n**2) . i)
+
 such that
-  forAll i : index . (sum j : index . ms(i*n + j + 1)) = S,
-  forAll j : index . (sum i : index . ms(i*n + j + 1)) = S,
-  (sum i : index . ms(i*n + i + 1)) = S,
-  (sum i : index . ms(i*n + (n-1-i) + 1)) = S
+    allDiff(flatten(square)),
+    forAll r : Index . (sum c : Index . square[r,c]) = s,
+    forAll c : Index . (sum r : Index . square[r,c]) = s,
+    (sum d : Index . square[d,d]) = s,
+    (sum d : Index . square[d,n+1-d]) = s
