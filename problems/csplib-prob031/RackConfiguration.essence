@@ -74,6 +74,6 @@ such that
                         ])
 
 $ The cost function is the sum of the prices of the rack models used by all the racks needed.
-minimising sum (rack, (model, counts)) in configuration . price(model)
-
-
+find totalCost : int(0.. |Rack| * |Model| * max(range(price)) )
+such that totalCost = sum (rack, (model, counts)) in configuration . price(model)
+minimising totalCost
