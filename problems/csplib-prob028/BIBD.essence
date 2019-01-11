@@ -15,7 +15,6 @@ find bibd : relation of (Obj * Block)
 such that
     forAll o  : Obj   . |toSet(bibd(o,_ ))| = r,
     forAll bl : Block . |toSet(bibd(_,bl))| = k,
-    forAll o1, o2 : Obj
-        , o2 > o1
-        . |toSet(bibd(o1,_)) intersect toSet(bibd(o2,_))| = lambda
+    forAll o1, o2 : Obj , o1 != o2 .
+        |toSet(bibd(o1,_)) intersect toSet(bibd(o2,_))| = lambda
 
