@@ -49,20 +49,15 @@ forAll route in plan .
     (sum (_,order) in route . orderWeights(order))
     <= vehicleCapacity 
 
-
-$every order must be delivered
-such that
-forAll order : plannedLocDomain .
-    1 = sum([toInt(order = loc) | route <- plan, (_,loc) <- route])
-
-$Inforce implied allDiff across all locations
+$all orders delivered once
 such that
 allDiff([loc | route <- plan, (_,loc) <- route]) 
-    
-    
-$  Implied constraint, sum of route lengths = number locations 
 such that
 (sum p in plan .
     |p|)
     = numberLocations
 
+$Implied constraint, commented out 
+    $ such that
+    $ forAll order : plannedLocDomain .
+    $     1 = sum([toInt(order = loc) | route <- plan, (_,loc) <- route])
