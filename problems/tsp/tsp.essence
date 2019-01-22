@@ -1,0 +1,20 @@
+language ESSENCE 1.3
+given numberCities : int
+given distances : function (total) tuple (int(1..numberCities), int(1..numberCities)) --> int
+$note that these costs should conform to the tsp lib spec
+$distances between tsp lib nodes are calculated to be the euclidian or geographical distance
+
+letting maxDistance be max([i | ((_,_), i) <- distances])
+letting tourLength be numberCities 
+
+find tour : sequence   (size tourLength, injective) of int(1..numberCities)
+
+find optVar  : int(0..maxDistance * numberCities)
+
+minimising optVar
+such that
+
+
+optVar = distances((tour(tourLength),tour(1))) + sum i : int(2..tourLength) .
+    distances((tour(i-1),tour(i)))
+
