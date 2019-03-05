@@ -1,0 +1,43 @@
+language ESSENCE 1.3
+
+given nonRenewableResources   new type enum
+given renewableResources  new type enum
+given jobs new type enum
+given startDummy, endDummy : jobs
+given modes new type enum
+given renewableLimits: function (total) renewableResources --> int
+given nonRenewableLimits  : function (total) nonRenewableResources --> int
+given successors : function (total) jobs --> set of jobs
+given renewableResourceUsage : function  (jobs, modes, renewableResources) --> int
+given nonRenewableResourceUsage : function (jobs, modes, nonRenewableResources) --> int
+given duration : function  (jobs,modes) --> int
+given horizon : int
+letting timesRange be domain int(1..horizon)
+find start: function (total)  jobs --> timesRange
+find mode: function (total) jobs --> modes
+find jobActive: function (total) (jobs,timesRange) --> bool
+such that
+$successors begin after their predecessor
+forAll job : jobs .
+    forAll jobSuccessor in successors(job) .
+        start(jobSuccessor) >= start(job) + duration((job,mode(job)))
+such that
+$channel  between start, duration and jobActive
+forAll job : jobs .
+    forAll time : timesRange .
+        jobActive((job,time)) <->(
+            time >= start(job) /\ time < start(job) + duration((job,mode(job))))
+such that
+$non renewable resources are not exceeded
+forAll resource : nonRenewableResources .
+    sum([nonRenewableResourceUsage((job, mode(job), resource) )| job : jobs])
+        <= nonRenewableLimits(resource)
+such that
+$renewable resources cannot be exceeded
+forAll resource : renewableResources .
+    forAll time : timesRange .
+        sum([renewableResourceUsage((job,mode(job),resource)) | job : jobs, jobActive((job,time))])
+            <= renewableLimits(resource)
+such that
+start(startDummy)=1
+minimising start(endDummy)
