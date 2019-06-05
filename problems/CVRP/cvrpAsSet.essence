@@ -18,7 +18,7 @@ given costs : function (total)  tuple (locDomain,locDomain) --> int(0..)
 
 
 $Vehicles 
-given vehicleCapacity : int
+given vehicleCapacity : int(1..)
 
 $  Maximum total cost is the cost of putting each item onto its own vehicle and driving from depot and back.
 letting maxTotalCost be sum([costs((0, i)) | i : plannedLocDomain])*2
