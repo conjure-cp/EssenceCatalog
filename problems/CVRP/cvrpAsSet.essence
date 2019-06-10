@@ -7,7 +7,7 @@ $One order per drop off location.
 
 
 $locations:
-given numberLocations : int
+given numberLocations : int(1..)
 $one order per location
 $ location 0 is depot location 
 letting locDomain  be domain int (0..numberLocations) $0 is included as distances from depot is needed
