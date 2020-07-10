@@ -1,0 +1,16 @@
+language Essence 1.3
+$ prob133.essence: Knapsack Problem
+ 
+given items new type enum
+given gain : function (total) items --> int
+given weight : function (total) items --> int
+
+given capacity : int
+
+find picked : set of items
+
+find optVar :  int(0..sum([gain(item) | item : items]))
+maximising optVar
+such that
+optVar = (sum i in picked . gain(i))
+such that (sum i in picked . weight(i)) <= capacity
