@@ -139,11 +139,15 @@ def function_generator(f_name, input_abbr_array, input_matrix, output_abbr=""):
     function_dict = get_function_dict(input_matrix, output_abbr)
     for key in function_dict:
         in_array = str(key).split(",")
-        line+="( "
+        if len(in_array) > 1:
+            line+="( "
         for i in range(len(in_array)):
             val = int(in_array[i]) + 1
             line+= str(input_abbr_array[i]) + "_" + str(val) + ", "
-        line= line[:-2] + " )" " --> " + str(function_dict[key]).replace("\'","") + ", "
+        line= line[:-2] 
+        if len(in_array) > 1:
+            line+= " )" 
+        line+= " --> " + str(function_dict[key]).replace("\'","") + ", "
     line=line[:-2] + " ) "
     return line
 
