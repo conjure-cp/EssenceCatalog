@@ -246,15 +246,21 @@ colourSub=[ colour[i] for i in range(n_orders)]
 
 print("letting ordSize be function (")
 
+comma=","
 for i in range(n_orders):
-    print("%d --> %d"%(i+1,orderSizeSub[i]))
+    if i == n_orders-1:
+        comma=""
+    print("%d --> %d %s"%(i+1,orderSizeSub[i], comma))
 
 print(")")
 
 print("letting ordCol be function (")
 
+comma=","
 for i in range(n_orders):
-    print("%d --> %d"%(i+1,colourSub[i]))
+    if i == n_orders-1:
+        comma=""
+    print("%d --> %d %s"%(i+1,colourSub[i],comma))
 
 print(")")
 
