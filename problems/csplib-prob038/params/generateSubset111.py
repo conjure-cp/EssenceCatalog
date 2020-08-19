@@ -244,6 +244,8 @@ print("letting col_per_slab be 2")
 orderSizeSub=[ orderSize[i] for i in range(n_orders)]
 colourSub=[ colour[i] for i in range(n_orders)]
 
+print("letting slabSizes be {"+(",".join([str(slabSizes[i]) for i in range(len(slabSizes))]))+"}")
+
 print("letting ordSize be function (")
 
 comma=","

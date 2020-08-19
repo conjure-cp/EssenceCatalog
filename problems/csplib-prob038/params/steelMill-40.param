@@ -2,6 +2,7 @@ language Essence 1.2.0
 letting n_orders be 40
 letting n_colours be 88
 letting col_per_slab be 2
+letting slabSizes be {12,14,17,18,19,20,23,24,25,26,27,28,29,30,32,35,39,42,43,44}
 letting ordSize be function (
 1 --> 4 ,
 2 --> 22 ,
