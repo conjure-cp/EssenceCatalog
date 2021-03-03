@@ -14,7 +14,7 @@ find hosts : set (minSize 1) of Boat,
 minimising |hosts|
 
 $ Hosts remain the same throughout the schedule
-such that such that
+such that
     forAll p in sched . |parts(p)| = |hosts| /\
     forAll part in parts(p) . |part intersect hosts| = 1
 
