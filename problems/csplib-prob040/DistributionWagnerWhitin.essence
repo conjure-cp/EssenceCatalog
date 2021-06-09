@@ -38,8 +38,10 @@ given children : matrix indexed by [dNodes] of set of dNodes
 
 $  Where orders is defined it has a value 1..maxStock. When not defined, no order is made. 
 find orders : function (dNodes, dPeriods) --> int(1..maxStock)
+$ such that orders((1,1)) = 2
+$ such that (1,1) in defined(orders)
 
-$ Auxiliary total function to keep track of stock at each node and period. 
+$ Auxiliary total function to keep track of stock at each node and period.
 find stock : function (total) (dNodes, dAllPeriods) --> int(0..maxStock)
 
 $ minimising the cost
@@ -48,7 +50,7 @@ minimising
     sum([ (holdingCost[i] * stock((i,t))) | t : dPeriods, i : dNodes]) +
     sum([ procCost[i] | (i,t) <- defined(orders)])
 
-$ stock starts at 0 for all nodes. 
+$ stock starts at 0 for all nodes.
 such that
     forAll i : dNodes .
         stock((i,0)) = 0

@@ -1,0 +1,44 @@
+
+letting D be domain int(1..9)
+
+find 🥪: matrix indexed by [D,D] of D
+such that forAll row : D . allDiff(🥪[row,..])
+such that forAll col : D . allDiff(🥪[..,col])
+such that forAll i,j : int(0..2) .
+    allDiff([ 🥪[row,col]
+            | row : int(i*2 .. (i+1)*2-1)
+            , col : int(j*2 .. (j+1)*2-1)
+            ])
+
+$ given hints must be placed on the correct cells
+given hints : matrix indexed by [D,D] of int(0..9)
+such that
+    forAll row, col : D .
+        hints[row,col] > 0 -> 🥪[row,col] = hints[row,col]
+
+
+$ indexed by row, carries the column index
+find leftBracket : matrix indexed by [D] of D
+find rightBracket : matrix indexed by [D] of D
+such that forAll row : D . leftBracket[row] < rightBracket[row]
+such that forAll row, col : D . 🥪[row,col] in {1,9} -> col in {leftBracket[row], rightBracket[row]}
+
+$ between leftBracket[r] and rightBracket[r]
+given rowSums : matrix indexed by [D] of int
+such that
+    forAll row : D .
+        rowSums[row] = sum([ 🥪[row,col] | col : int(leftBracket[row]+1 .. rightBracket[row]-1) ])
+
+
+$ indexed by column, carries the row index
+find topBracket : matrix indexed by [D] of D
+find bottomBracket : matrix indexed by [D] of D
+such that forAll col : D . topBracket[col] < bottomBracket[col]
+such that forAll row, col : D . 🥪[row,col] in {1,9} -> row in {topBracket[col], bottomBracket[col]}
+
+$ between leftBracket[r] and rightBracket[r]
+given columnSums : matrix indexed by [D] of int
+such that
+    forAll col : D .
+        columnSums[col] = sum([ 🥪[row,col] | row : int(topBracket[col]+1 .. bottomBracket[col]-1) ])
+
