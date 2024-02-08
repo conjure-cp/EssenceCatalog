@@ -1,0 +1,76 @@
+
+given order : int
+
+letting ix be order - 1
+
+letting diameter be order * 2 - 1
+letting max_val be 3 * order**2 - 3 * order + 1
+letting total_sum be max_val * (max_val+1) / 2 $ or: sum i : int(1 .. max_val) . i
+
+$ See the "Cube coordinates" variant explained here: https://math.stackexchange.com/questions/2254655/hexagon-grid-coordinate-system
+$ Even better: https://www.redblobgames.com/grids/hexagons/#coordinates
+
+find hexagon : matrix indexed by [int(-ix..ix), int(-ix..ix), int(-ix..ix)] of int(0..max_val)
+
+$ used cells
+such that
+[ hexagon[i, j, k] != 0
+| i, j, k : int(-ix..ix)
+, i + j + k = 0
+]
+
+$ unused cells
+such that
+[ hexagon[i, j, k] = 0
+| i, j, k : int(-ix..ix)
+, i + j + k != 0
+]
+
+such that allDiff([ hexagon[i, j, k]
+                  | i, j, k : int(-ix..ix)
+                  , i + j + k = 0
+                  ])
+
+find sumsto : int(0..total_sum)
+
+such that
+[ sumsto = sum([hexagon[i, j, k] | j, k : int(-ix..ix)])
+| i : int(-ix..ix)
+]
+
+such that
+[ sumsto = sum([hexagon[i, j, k] | i, k : int(-ix..ix)])
+| j : int(-ix..ix)
+]
+
+such that
+[ sumsto = sum([hexagon[i, j, k] | i, j : int(-ix..ix)])
+| k : int(-ix..ix)
+]
+
+$ symmetry breaking
+$ see: https://proofwiki.org/wiki/Definition:Symmetry_Group_of_Regular_Hexagon#Group_Action_on_Vertices
+
+find A : int(0..max_val) such that A = hexagon[0,ix,-ix]
+find B : int(0..max_val) such that B = hexagon[ix,0,-ix]
+find C : int(0..max_val) such that C = hexagon[ix,-ix,0]
+find D : int(0..max_val) such that D = hexagon[-ix,0,ix]
+find E : int(0..max_val) such that E = hexagon[0,-ix,ix]
+find F : int(0..max_val) such that F = hexagon[-ix,ix,0]
+
+such that [A,B,C,D,E,F] <=lex [B,C,D,E,F,A]
+such that [A,B,C,D,E,F] <=lex [C,D,E,F,A,B]
+such that [A,B,C,D,E,F] <=lex [D,E,F,A,B,C]
+such that [A,B,C,D,E,F] <=lex [E,F,A,B,C,D]
+such that [A,B,C,D,E,F] <=lex [F,A,B,C,D,E]
+
+such that [A,B,C,D,E,F] <=lex [A,F,E,D,C,B]
+such that [A,B,C,D,E,F] <=lex [B,A,F,E,D,C]
+such that [A,B,C,D,E,F] <=lex [C,B,A,F,E,D]
+such that [A,B,C,D,E,F] <=lex [D,C,B,A,F,E]
+such that [A,B,C,D,E,F] <=lex [E,D,C,B,A,F]
+such that [A,B,C,D,E,F] <=lex [F,E,D,C,B,A]
+
+$ --------------------------------------------------------------------------------
+
+such that diameter * sumsto = total_sum
