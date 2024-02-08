@@ -4,7 +4,7 @@ $ Problem details available at http://www.csplib.org/Problems/prob028/
 
 given v, b, r, k, lambda : int(1..)
 
-$ the following conditions define a symmetric BIBD:
+$ the following conditions define a symmetric BIBD
 $ where v = b
 $ where r = k
 
@@ -13,8 +13,8 @@ where r * v = b * k
 where lambda * (v - 1) = r * (k - 1)
 where b >= v
 
-letting Obj   be new type of size v,
-        Block be new type of size b
+letting Obj   be domain int(1..v)
+letting Block be domain int(1..b)
 
 find bibd : relation of (Obj * Block)
 
@@ -22,5 +22,21 @@ such that
     forAll o  : Obj   . |toSet(bibd(o,_ ))| = r,
     forAll bl : Block . |toSet(bibd(_,bl))| = k,
     forAll o1, o2 : Obj
-        , o2 != o1
+        , o1 < o2
         . |toSet(bibd(o1,_)) intersect toSet(bibd(o2,_))| = lambda
+
+
+
+$ ideally the types would be defined as follows:
+$ letting Obj   be new type of size v
+$ letting Block be new type of size b
+$ which would break symmetry automatically.
+
+$ We do double-lex manually for now
+
+$ symmetry breaking
+such that
+    forAll o : int(1..v-1) .
+        [ toInt(bibd(o,bl)) | bl : Block ] <=lex [ toInt(bibd(o+1,bl)) | bl : Block ],
+    forAll bl : int(1..b-1) .
+        [ toInt(bibd(o,bl)) | o : Obj ] <=lex [ toInt(bibd(o,bl+1)) | o : Obj ]
