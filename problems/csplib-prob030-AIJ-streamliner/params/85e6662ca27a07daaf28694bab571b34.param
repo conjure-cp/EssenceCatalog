@@ -1,0 +1,14 @@
+language Essence 1.3
+
+letting course_load be
+        function(1 --> 1, 2 --> 8, 3 --> 12, 4 --> 3, 5 --> 1, 6 --> 15, 7 --> 21, 8 --> 1, 9 --> 11, 10 --> 8,
+                 11 --> 6, 12 --> 12, 13 --> 11, 14 --> 20, 15 --> 16, 16 --> 12, 17 --> 18, 18 --> 16, 19 --> 21,
+                 20 --> 3, 21 --> 12, 22 --> 8, 23 --> 14, 24 --> 8, 25 --> 17, 26 --> 16, 27 --> 16, 28 --> 13,
+                 29 --> 7, 30 --> 16, 31 --> 3, 32 --> 17, 33 --> 15)
+letting courses_per_period_lb be 1
+letting courses_per_period_ub be 15
+letting load_per_period_lb be 11
+letting load_per_period_ub be 47
+letting n_courses be 33
+letting n_periods be 16
+letting prerequisite be relation()
