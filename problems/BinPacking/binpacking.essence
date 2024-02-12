@@ -1,0 +1,7 @@
+given items new type enum
+given weights : function (total) items --> int
+given binSize : int
+find packing : partition from items
+minimising |parts(packing)|
+such that  forAll p in parts(packing) .
+    binSize >= sum i in p . weights(i)
