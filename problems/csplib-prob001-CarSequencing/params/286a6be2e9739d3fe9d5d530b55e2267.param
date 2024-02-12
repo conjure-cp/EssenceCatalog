@@ -1,0 +1,17 @@
+language Essence 1.3
+
+letting blksize_delta be function(1 --> 4, 2 --> 4, 3 --> 4, 4 --> 4, 5 --> 4, 6 --> 4)
+letting maxcars be function(1 --> 9, 2 --> 10, 3 --> 10, 4 --> 8, 5 --> 10, 6 --> 10)
+letting n_cars be 144
+letting n_classes be 2
+letting n_options be 6
+letting quantity be function(1 --> 72, 2 --> 72)
+letting usage be relation((1, 3), (1, 4), (1, 5), (2, 1), (2, 2), (2, 6))
+$ Visualisation for usage
+$ 1 3
+$ 1 4
+$ 1 5
+$ 2 1
+$ 2 2
+$ 2 6
+
