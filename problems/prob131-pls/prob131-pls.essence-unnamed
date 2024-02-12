@@ -1,7 +1,0 @@
-letting Batch be new type of size (sum e in defined(capacity) . (capacity(e)))
-
-find batches : function (total) Batch --> mset (maxSize maxLot) of Lot
-
-find batch_attr : function (total) Batch --> set of Attribute
-
-find schedule : function (total, injective) tuple (Line,Day,Slot) --> Batch
