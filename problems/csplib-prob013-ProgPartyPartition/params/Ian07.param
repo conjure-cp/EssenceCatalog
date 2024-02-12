@@ -1,0 +1,30 @@
+language Essence 1.3
+$ Barbara's paper says 39 boats, max crew size 7
+$ all data in Table 1 of the paper and in csplib
+$ csplib says 6 time periods.
+$ Reduced period to 5 here, otherwise suspect a bit hard
+
+letting n_boats be 11
+letting n_periods be 5
+letting capacity be function(1 --> 6, 
+                             2 --> 8,
+                             3 --> 12,
+                             4 --> 12,
+                             5 --> 12,
+                             6 --> 12,
+                             7 --> 12,
+                             8 --> 10,
+                             9 --> 10,
+                             10 --> 10,
+                             11 --> 10)
+letting crew be function(1 --> 2, 
+                         2 --> 2,
+                         3 --> 2,
+                         4 --> 2,
+                         5 --> 4,
+                         6 --> 4,
+                         7 --> 4,
+                         8 --> 1,
+                         9 --> 2,
+                         10 --> 2,
+                         11 --> 2)
