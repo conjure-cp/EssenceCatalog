@@ -2,16 +2,25 @@ language Essence 1.3
 $ prob036.essence: Fixed Length Error Correcting Codes
 $ Problem details available at http://www.csplib.org/Problems/prob036/
 
-given Character new type enum  ,
-      maxDist       : int(1..) ,        $ maxDist is the maximum distance between two characters
+given nbCharacter : int(1..)
+letting Character be domain int(1..nbCharacter)
+
+$ instead an enumerated type can also be used, as follows:
+$ given Character new type enum
+
+
+given maxDist       : int(1..) ,        $ maxDist is the maximum distance between two characters
       codeWordLength : int(1..),
       numOfCodeWords : int(1..)
 
 letting Index be domain int(1..codeWordLength),
         String be domain function (total) Index --> Character
 
-given dist : function (Character, Character) --> int(0..maxDist),
+given dist : function (total) (Character, Character) --> int(0..maxDist),
       minDist : int(0..maxDist * codeWordLength)
+
+where forAll c : Character . dist((c,c)) = 0
+where forAll c1, c2 : Character . dist((c1,c2)) = dist((c2, c1))
 
 find c : set (size numOfCodeWords) of String
 
