@@ -1,0 +1,11 @@
+language Essence 1.3
+
+letting codeWordLength be 20
+letting dist be
+        function((1, 1) --> 0, (1, 2) --> 3, (1, 3) --> 2, (1, 4) --> 1, (2, 1) --> 3, (2, 2) --> 0, (2, 3) --> 2,
+                 (2, 4) --> 1, (3, 1) --> 2, (3, 2) --> 2, (3, 3) --> 0, (3, 4) --> 4, (4, 1) --> 1, (4, 2) --> 1,
+                 (4, 3) --> 4, (4, 4) --> 0)
+letting maxDist be 5
+letting minDist be 41
+letting nbCharacter be 4
+letting numOfCodeWords be 5
