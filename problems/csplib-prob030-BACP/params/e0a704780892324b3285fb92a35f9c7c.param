@@ -1,0 +1,22 @@
+language Essence 1.3
+
+letting course_load be
+        function(1 --> 5, 2 --> 21, 3 --> 11, 4 --> 9, 5 --> 23, 6 --> 14, 7 --> 15, 8 --> 4, 9 --> 3, 10 --> 13,
+                 11 --> 18, 12 --> 17, 13 --> 1, 14 --> 13, 15 --> 12, 16 --> 17, 17 --> 12, 18 --> 16, 19 --> 18,
+                 20 --> 1, 21 --> 7, 22 --> 21, 23 --> 6, 24 --> 1, 25 --> 18, 26 --> 23, 27 --> 6, 28 --> 5, 29 --> 10,
+                 30 --> 2, 31 --> 9, 32 --> 23, 33 --> 5, 34 --> 3, 35 --> 20, 36 --> 10, 37 --> 18, 38 --> 14,
+                 39 --> 2, 40 --> 3, 41 --> 1, 42 --> 12, 43 --> 23, 44 --> 13, 45 --> 1, 46 --> 24)
+letting courses_per_period_lb be 1
+letting courses_per_period_ub be 39
+letting load_per_period_lb be 16
+letting load_per_period_ub be 31
+letting n_courses be 46
+letting n_periods be 28
+letting prerequisite be relation((30, 14), (31, 14), (32, 14), (33, 14), (34, 14))
+$ Visualisation for prerequisite
+$ 30 14
+$ 31 14
+$ 32 14
+$ 33 14
+$ 34 14
+
