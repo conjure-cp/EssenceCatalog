@@ -1,0 +1,6 @@
+language Essence 1.3
+
+letting dist be 14
+letting lam be 34
+letting numChars be 17
+letting numCodeWords be 2
