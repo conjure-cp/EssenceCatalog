@@ -1,0 +1,37 @@
+language Essence 1.3
+
+$ Generated using seed: 62062
+
+letting n_boats be 12
+letting n_periods be 26
+
+letting capacity be function(
+1 --> 9,
+2 --> 30,
+3 --> 17,
+4 --> 3,
+5 --> 20,
+6 --> 9,
+7 --> 27,
+8 --> 27,
+9 --> 43,
+10 --> 17,
+11 --> 45,
+12 --> 7
+)
+
+letting crew be function(
+1 --> 1,
+2 --> 8,
+3 --> 5,
+4 --> 1,
+5 --> 12,
+6 --> 1,
+7 --> 14,
+8 --> 11,
+9 --> 20,
+10 --> 4,
+11 --> 12,
+12 --> 4
+)
+
