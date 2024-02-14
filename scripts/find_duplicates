@@ -1,0 +1,137 @@
+#!/usr/bin/python
+import os
+import hashlib
+from sys import argv
+from itertools import combinations
+from typing import Tuple
+
+def get_all_files(folder, depth=1)-> Tuple[list,list]:
+    files = []
+    try:
+        files = os.listdir(folder)
+    except:
+        return [], []
+    files_and_content = []
+    structure = [f"-{folder} directory content:"]
+    folders = []
+    for file in files:
+        current = os.path.join(folder, file)
+        if os.path.isdir(current):
+            new_depth = depth + 1
+            sub_content, sub_structure = get_all_files(current, depth=new_depth)
+            files_and_content += sub_content
+            prefix = "\n" + ("\t" * (1 + depth))
+            sub_str = prefix.join(sub_structure)
+            folders.append(sub_str)
+        else:
+            with open(current) as f:
+                files_and_content.append((current, f.read()))
+                structure.append(f"-{current.replace(folder, '').replace('/', '')}")
+    structure += folders
+    return files_and_content, structure
+
+def main():
+    if len(argv) < 2:
+        print("ERROR: at least an argument needed. See --help for help")
+        return
+    folder = argv[1]
+    delete = ''
+    remove_whitespace = False
+    save = False
+    hash = True
+    verbose = True
+    save_file = ""
+
+    if folder == "--help" or folder == '-h':
+        print("""This tool identifies duplicate files within a specified folder.
+Usage: find_duplicates folder [options]
+
+Options:
+-w: Remove whitespaces (excluding newlines) from files before comparison.
+-c: Choose to delete one of the duplicate files. For example, using -c=File1 will remove 'File1' duplicates. If no pattern is specified (-c), the default behavior is to delete the first encountered duplicate.
+-s: Save the standard output to the specified file.
+-h: Compare the hashed content of files instead of their raw content.
+-v: Disable verbose output.
+--help: Display this help message.
+""")
+        return
+
+    if len(argv) > 6:
+        print("ERROR: maximum number of supported argument is 6. for help use: --help")
+
+    for arg in argv[2:]:
+        if arg == '-w':
+            remove_whitespace = True
+        elif "-c" in arg:
+            delete = arg
+        elif "-s" in arg:
+            save = True
+            save_file = arg.replace("-s=",'')
+        elif arg == "-h":
+            hash = True
+        elif arg == "-v":
+            verbose = False
+
+    files_and_content, structure = get_all_files(folder)
+    if len(files_and_content) == 0:
+        return
+    sub_str = '\n\t'.join(structure)
+    std = ["list of files before scanning for duplicates:", sub_str, ""]
+    if verbose:
+        print("list of files before scanning for duplicates:")
+        print(sub_str)
+        print()
+    deleted = []
+    identical = []
+    empty = []
+    if remove_whitespace:
+        files_and_content = [(f[0], f[1].replace(" ",'')) for f in files_and_content]
+    if hash:
+        files_and_content = [(f[0], hashlib.sha256(f[1].encode()).hexdigest().replace(" ",'')) for f in files_and_content]
+
+    for comb in combinations(files_and_content,2):
+        c0, c1 = comb
+        name0, content0 = c0
+        name1, content1 = c1
+
+        if content0 == '' and name0 not in empty:
+            empty.append(name0) 
+
+        if content1 == '' and name1 not in empty:
+            empty.append(name1)
+
+        if name0 in deleted or name1 in deleted:
+            continue
+
+        if content0 == content1:
+            identical.append((name0, name1))
+            if content0 == '':
+                empty = [name0, name1]
+            if delete != '':
+                if delete == '-c' or delete.replace("-c=","") in name0:
+                    os.remove(name0)
+                    deleted.append(name0)
+                elif delete.replace("-c=","") in name1: 
+                    os.remove(os.path.join(folder, name1))
+                    deleted.append(name1)
+                else:
+                    pass
+    identical_str = '\n\t'.join([f"{i[0].replace(folder, '')} - {i[1].replace(folder, '')}" for i in identical])
+    deleted_str = '\n\t'.join(deleted)
+    if verbose:
+        print("list of identical instances:")
+        print(identical_str)
+        print()
+        print("list of deleted files:")
+        print(deleted_str)
+    std += ["list of identical instances:", identical_str, '', "list of deleted files:", deleted_str]
+    if len(identical) == 0:
+        print(f"there are no identical files in {folder}. Nothing done")
+        return
+    if save:
+        save_str = "\n".join(std)
+        f = open(save_file, 'w')
+        f.write(save_str)
+        f.close()
+
+main()
