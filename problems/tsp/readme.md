@@ -1,0 +1,86 @@
+list of files before scanning for duplicates:
+-EssenceCatalog/problems/tsp/params directory content:
+	-eil76.param
+	-pa561.param
+	-ch130.param
+	-gr137.param
+	-gr48.param
+	-gil262.param
+	-kroA200.param
+	-ch150.param
+	-dantzig42.param
+	-pr144.param
+	-fri26.param
+	-bier127.param
+	-ulysses16.param
+	-kroB200.param
+	-gr229.param
+	-pr76.param
+	-gr120.param
+	-kroD100.param
+	-eil51.param
+	-rd400.param
+	-eil101.param
+	-dsj1000.param
+	-gr96.param
+	-gr17.param
+	-bayg29.param
+	-brg180.param
+	-pr152.param
+	-hk48.param
+	-rat195.param
+	-a280.param
+	-berlin52.param
+	-u724.param
+	-kroE100.param
+	-burma14.param
+	-pr124.param
+	-rd100.param
+	-pcb442.param
+	-pr107.param
+	-tsp225.param
+	-att48.param
+	-d657.param
+	-lin318.param
+	-si175.param
+	-pr264.param
+	-gr431.param
+	-linhp318.param
+	-ali535.param
+	-d493.param
+	-kroA150.param
+	-kroB150.param
+	-u159.param
+	-rat783.param
+	-kroA100.param
+	-pr439.param
+	-gr21.param
+	-kroC100.param
+	-swiss42.param
+	-kroB100.param
+	-brazil58.param
+	-gr202.param
+	-ulysses22.param
+	-lin105.param
+	-gr24.param
+	-pr299.param
+	-rat575.param
+	-si535.param
+	-gr666.param
+	-fl417.param
+	-p654.param
+	-rat99.param
+	-bays29.param
+	-pr226.param
+	-st70.param
+	-pr136.param
+	-u574.param
+	-att532.param
+	-ts225.param
+	-d198.param
+
+list of identical instances:
+/lin318.param - /linhp318.param
+
+list of deleted files:
+EssenceCatalog/problems/tsp/params/lin318.param
