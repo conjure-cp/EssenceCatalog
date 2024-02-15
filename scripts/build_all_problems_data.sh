@@ -18,6 +18,5 @@ fi
 for subfolder in "$folder"/*/; do
     ./build_problem_data "${subfolder}" 
 done
-
-echo "Done."
+./problem_summary "$folder"
 

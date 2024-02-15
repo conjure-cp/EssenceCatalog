@@ -1,9 +1,7 @@
 #!/usr/bin/python
-import os
-from json import dumps
-from os.path import join
 from sys import argv
-
+import os
+from json import load
 
 def get_all_files(folder, filter_function)-> list:
     files = []
@@ -22,15 +20,13 @@ def get_all_files(folder, filter_function)-> list:
     return files_and_content
 
 def main():
-    if len(argv) < 2:
-        print("please specify a folder to scan")
-        return
+    files = get_all_files(argv[1], lambda x: "ProblemData.json" in x)
+    data = []
+    for file in files:
+        with open(file) as f:
+            data.append(load(f))
+    data = sorted(data, key=lambda x: x["NumberOfInstances"], reverse=True)
+    for i in range(len(data)):
+        print(f"{i}) {data[i]['model']} with {data[i]['NumberOfInstances']} instances")
 
-    folder = argv[1]
-    instances = get_all_files(os.path.join(folder, "params"), filter_function= lambda x: ".param" in x)
-    number_of_instances = len(instances)
-    model_file = get_all_files(folder, filter_function= lambda x: ".essence" in x)[0].split("/")[-1]
-    f = open(join(folder, "ProblemData.json"), "w")
-    f.write(dumps({"NumberOfInstances":number_of_instances, "model":model_file}))
-    f.close()
 main()
