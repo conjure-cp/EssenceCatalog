@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import os
+import os, sys
 from sys import argv
 import pandas as pd
 from pandas.core.api import DataFrame
@@ -40,8 +40,8 @@ def get_all_subfolders(folder)-> list:
     return folders
 
 def main():
-    if len(argv) < 2:
-        print("please provide a folder to scan")
+    if len(argv) != 3:
+        sys.exit("please provide a folder to scan and an output filename")
     main_folder = argv[1]   
     sub_folders = get_all_subfolders(main_folder)
     data = []
@@ -50,7 +50,7 @@ def main():
     data = sorted(data, key = lambda x: x["NumberOfInstances"], reverse=True)
 
     dataframe = pd.DataFrame(data)
-    dataframe.to_csv(os.path.join(main_folder, "modelsData.csv"), mode = 'w', index=False)
+    dataframe.to_csv(argv[2], mode = 'w', index=False)
     for i in range(len(dataframe)):
         print(f"{i}) {dataframe.iloc[i,:]['model']} with {dataframe.iloc[i,:]['NumberOfInstances']} instances")
 main()
