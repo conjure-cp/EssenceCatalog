@@ -7,8 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 # Get the folder path
-folder="$1"
-
+folder=$1
 # Check if the folder exists
 if [ ! -d "$folder" ]; then
     echo "Folder $folder does not exist."
