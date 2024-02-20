@@ -1,40 +1,76 @@
-language ESSENCE 1.2.0
-$ prob023.essence: Magic Hexagon
-$ Problem details available at http://www.csplib.org/Problems/prob023/
-$ 03 September 2007
-$
 
-$ d: the diameter of the hexagon (length of the longest row)
-given d : int(1..)
+given order : int
 
-$ d must be an odd integer
-where d % 2 = 1
+letting ix be order - 1
 
-$ o: the order of the hexagon (length of the shortest row)
-$ maxval: the maximum value that will appear in the hexagon
-$ maxsum: the maximum value that a row could sum to
-$ Value: the domain consisting of the integers contained in the hexagon
-letting o be d/2 + 1,
-        maxval be 3 * o**2 - 3 * o + 1,
-        maxsum be sum i : int(maxval + 1 - d..maxval) . i,
-        Value be domain int(1..maxval)
+letting diameter be order * 2 - 1
+letting max_val be 3 * order**2 - 3 * order + 1
+letting total_sum be max_val * (max_val+1) / 2 $ or: sum i : int(1 .. max_val) . i
 
-$ hexagon: the hexagon is represented by a matrix. for any row i, we are only
-$          interested in the first d - |d/2 + 1 - i| elements of the row
-$ s: the magic number that all rows and diagonals sum to
-find hexagon : matrix indexed by [int(1..d),int(1..d)] of Value,
-     s : int(1..maxsum)
+$ See the "Cube coordinates" variant explained here: https://math.stackexchange.com/questions/2254655/hexagon-grid-coordinate-system
+$ Even better: https://www.redblobgames.com/grids/hexagons/#coordinates
+
+find hexagon : matrix indexed by [int(-ix..ix), int(-ix..ix), int(-ix..ix)] of int(0..max_val)
+
+$ used cells
+such that
+[ hexagon[i, j, k] != 0
+| i, j, k : int(-ix..ix)
+, i + j + k = 0
+]
+
+$ unused cells
+such that
+[ hexagon[i, j, k] = 0
+| i, j, k : int(-ix..ix)
+, i + j + k != 0
+]
+
+such that allDiff([ hexagon[i, j, k]
+                  | i, j, k : int(-ix..ix)
+                  , i + j + k = 0
+                  ])
+
+find sumsto : int(0..total_sum)
 
 such that
-$ all elements are different (and therefore all values are included)
-    forAll r1,r2 : int(1..d) . forAll i1 : int(1..d - |o - r1|) .
-        forAll i2 : int(1..d - |o - r2|) . r1 != r2 \/ i1 != i2 ->
-            hexagon[r1,i1] != hexagon[r2,i2],
-$ all rows sum to s
-    forAll r : int(1..d) . (sum i : int(1..d - |o - r|) . hexagon[r,i]) = s,
-$ all right-sloping diagonals sum to s
-    forAll r : int(1..d) . (sum i : int(1..d - |o - r|) .
-        hexagon[i + max({0,o-r}), r - max({0,o-(i + max({0,o-r}))})]) = s,
-$ all left-sloping diagonals sum to s
-    forAll r : int(1..d) . (sum i : int(1..d - |o - r|) .
-        hexagon[i + max({0,r-o}), r - max({0,(i + max({0,r-o}))-o})]) = s
+[ sumsto = sum([hexagon[i, j, k] | j, k : int(-ix..ix)])
+| i : int(-ix..ix)
+]
+
+such that
+[ sumsto = sum([hexagon[i, j, k] | i, k : int(-ix..ix)])
+| j : int(-ix..ix)
+]
+
+such that
+[ sumsto = sum([hexagon[i, j, k] | i, j : int(-ix..ix)])
+| k : int(-ix..ix)
+]
+
+$ symmetry breaking
+$ see: https://proofwiki.org/wiki/Definition:Symmetry_Group_of_Regular_Hexagon#Group_Action_on_Vertices
+
+find A : int(0..max_val) such that A = hexagon[0,ix,-ix]
+find B : int(0..max_val) such that B = hexagon[ix,0,-ix]
+find C : int(0..max_val) such that C = hexagon[ix,-ix,0]
+find D : int(0..max_val) such that D = hexagon[-ix,0,ix]
+find E : int(0..max_val) such that E = hexagon[0,-ix,ix]
+find F : int(0..max_val) such that F = hexagon[-ix,ix,0]
+
+such that [A,B,C,D,E,F] <=lex [B,C,D,E,F,A]
+such that [A,B,C,D,E,F] <=lex [C,D,E,F,A,B]
+such that [A,B,C,D,E,F] <=lex [D,E,F,A,B,C]
+such that [A,B,C,D,E,F] <=lex [E,F,A,B,C,D]
+such that [A,B,C,D,E,F] <=lex [F,A,B,C,D,E]
+
+such that [A,B,C,D,E,F] <=lex [A,F,E,D,C,B]
+such that [A,B,C,D,E,F] <=lex [B,A,F,E,D,C]
+such that [A,B,C,D,E,F] <=lex [C,B,A,F,E,D]
+such that [A,B,C,D,E,F] <=lex [D,C,B,A,F,E]
+such that [A,B,C,D,E,F] <=lex [E,D,C,B,A,F]
+such that [A,B,C,D,E,F] <=lex [F,E,D,C,B,A]
+
+$ --------------------------------------------------------------------------------
+
+such that diameter * sumsto = total_sum
