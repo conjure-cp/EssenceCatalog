@@ -21,10 +21,10 @@ NumberOfInstances,model
 106,CVRP.essence
 95,ProgPartyFunctionDecision.essence
 90,VanDerWaerden.essence
-80,Langford-combinedDirect.essence
-80,Langford-direct.essence
-80,Langford-combinedPosition.essence
-80,Langford-positional.essence
+80,LangfordCombinedDirect.essence
+80,LangfordDirect.essence
+80,LangfordCombinedPositional.essence
+80,LangfordPositional.essence
 77,TSP.essence
 56,MinimumEnergyBroadcast.essence
 30,NumberPartitioningFull.essence
@@ -40,7 +40,7 @@ NumberOfInstances,model
 17,MaximumDensityStillLife.essence
 17,GracefulDoubleWheelGraphs.essence
 13,NQueens.essence
-11,steelMill.essence
+11,SteelMill.essence
 10,AllIntervalSeries.essence
 9,DiamondFree.essence
 7,GolombRuler.essence
