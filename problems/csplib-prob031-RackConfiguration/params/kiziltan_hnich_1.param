@@ -1,7 +1,7 @@
 language Essence 1.3
 
 $ The example instance from the following paper.
-$ "Symmetry Breaking in a Rack Configuration Problem" Zeynep Kızıltan and Brahim Hnich
+$ "Symmetry Breaking in a Rack Configuration Problem" Zeynep Kiziltan and Brahim Hnich
 
 letting nbRacks be 5
 
