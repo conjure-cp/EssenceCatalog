@@ -43,7 +43,7 @@ $ flights are made in the correct order
         (s(i),s(i+1)) in network,
 $ every flight is made exactly once
     forAll f : Flight . exists p : Plane . f in range(route(p)),
-    forAll p1,p2 : Plane . |range(route(p1)) intersect range(route(p2))| = 0,
+    forAll p1,p2 : Plane . p1 != p2 -> |range(route(p1)) intersect range(route(p2))| = 0,
 $ every aircraft visits a maintenance depot frequently enough
     forAll s in range(route) . forAll i : int(1..n_flights - maint_freq) , i <= |s| - maint_freq .
         exists j : int(i..i+maint_freq) . s(j) in maint
