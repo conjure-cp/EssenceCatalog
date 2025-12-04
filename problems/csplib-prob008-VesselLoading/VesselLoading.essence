@@ -30,7 +30,7 @@ $ separation: the minimum allowed separation between two container classes
 given width      : function (total) Container --> Width,
       length     : function (total) Container --> Length,
       class      : function (total) Container --> Class,
-      separation : function (total) set (size 2) of Class --> int(0..)
+      separation : function set (size 2) of Class --> int(0..)
 
 $ west  : the x coordinate of a container's western edge
 $ north : the y coordinate of a container's northern edge
@@ -60,7 +60,7 @@ $ containers do not overlap each other
 
 such that
 $ container placement meets the class separation constraints
-    forAll c1, c2 : Container . c1 != c2 ->
+    forAll c1, c2 : Container . c1 < c2 /\ {class(c1), class(c2)} in defined(separation)->
         max({west(c1), west(c2)}) - min({east(c1), east(c2)})
             >= separation({class(c1), class(c2)}) \/
         max({north(c1), north(c2)}) - min({south(c1), south(c2)})
